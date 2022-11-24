@@ -1,0 +1,11 @@
+[package]
+name = "cleanup-compdb"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+json_compilation_db = "0.3.0"
+path-slash = "0.2.1"
+path-absolutize = "3.0.14"
