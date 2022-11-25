@@ -2,6 +2,7 @@
 
 Postprocess and clean up your `compilation_commands.json`, as generated from your build tool.  Does the following:
 
+ - Append to the compile arguments, useful for suppressing additional warnings
  - Converts relative paths into absolute paths for increased readability
  - Removes problematic `cmd /C` prefix in commands on Windows, which confuses clangd
  - Strip linker commands and phony targets which are not real compilation commands
