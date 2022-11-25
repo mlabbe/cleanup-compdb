@@ -1,7 +1,16 @@
 
+use clap::Parser;
 use std::io::{self, BufRead};
 use cleanup_compdb::cleanup;
 use json_compilation_db;
+
+#[derive(Parser, Debug)]
+#[command(author, version, about, long_about = None)]
+struct Args {
+    /// arguments to append to the end; useful for suppressing warnings
+    #[arg(long, default_value = "")]
+    append_arguments: String,
+}
 
 // assumes stdin is good actor; heap attack possible
 #[allow(dead_code)]
@@ -20,6 +29,8 @@ fn read_stdin_until_eof() -> String {
 }
 
 fn main() {
+
+    let cli_args = Args::parse();
     
     let entries = match json_compilation_db::from_reader(io::stdin()) {
         Ok(t) => t,
@@ -59,7 +70,8 @@ fn main() {
 
         //
         // arguments
-        let arguments = cleanup::arguments_strip_cmd_c(&entry.arguments);
+        let mut arguments = cleanup::arguments_strip_cmd_c(&entry.arguments);
+        arguments = cleanup::append_string_to_arguments(&arguments, &cli_args.append_arguments);
 
         let out_entry = json_compilation_db::Entry {
             file: file,

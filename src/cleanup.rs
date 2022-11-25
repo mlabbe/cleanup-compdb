@@ -63,3 +63,23 @@ pub fn arguments_strip_cmd_c(args: &Vec<String>) -> Vec<String> {
 
     args.clone()
 }
+
+/// append a string to args[0]
+/// useful for adding warnings
+/// doesn't push new args onto the vector because clangd
+/// is giving spurious results when I do that
+pub fn append_string_to_arguments(args: &Vec<String>, arg_string: &str) -> Vec<String> {
+    if args.len() == 0 {
+        let mut v = Vec::new();
+        v.push(arg_string.to_string());
+        return v;
+    }
+    let mut out_args = args[0..].to_vec();
+    let mut out_arg = out_args[0].clone();
+    out_arg.push_str(" ");
+    out_arg.push_str(arg_string);
+
+    out_args[0] = out_arg;
+
+    out_args
+}

@@ -9,3 +9,4 @@ edition = "2021"
 json_compilation_db = "0.3.0"
 path-slash = "0.2.1"
 path-absolutize = "3.0.14"
+clap = { version = "4.0.27", features = ["derive"] }
