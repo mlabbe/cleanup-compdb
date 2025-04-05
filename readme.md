@@ -20,7 +20,7 @@ Works on the author's Windows machine, using output from Ninja 1.10.2.  Not inte
 
 # Copyright and Credit #
 
-Copyright &copy; 2022 [Frogtoss Games](http://www.frogtoss.com), Inc.
+Copyright &copy; 2022-2025 [Frogtoss Games](http://www.frogtoss.com), Inc.
 File [LICENSE](LICENSE) covers all files in this repo.
 
 Compilation Database Cleanup by Michael Labbe

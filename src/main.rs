@@ -1,5 +1,5 @@
 /*                                                                            *
- * cleanup-compdb Copyright (C) 2021-2025 Frogtoss Games, Inc                 *
+ * cleanup-compdb Copyright (C) 2022-2025 Frogtoss Games, Inc                 *
  *                                                                            */
 
 use clap::Parser;
@@ -76,6 +76,8 @@ fn main() {
         }
     });
 
+
+    
     if let Err(e) = write(writer, processed_entries) {
         eprintln!("json database write error: {e}");
         std::process::exit(1);
