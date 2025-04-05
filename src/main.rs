@@ -71,7 +71,7 @@ fn main() {
             },
             Err(e) => {
                 eprintln!("read error: {e}");
-                None
+                std::process::exit(1);
             }
         }
     });
