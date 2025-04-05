@@ -1,3 +1,6 @@
+/*                                                                            *
+ * cleanup-compdb Copyright (C) 2021-2025 Frogtoss Games, Inc                 *
+ *                                                                            */
 
 use clap::Parser;
 use std::io::{self, BufWriter};
