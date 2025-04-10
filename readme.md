@@ -8,7 +8,6 @@ Postprocess and clean up your `compilation_commands.json`, as generated from you
  - Strip linker commands and phony targets which are not real compilation commands
  - Increases readability with unix-style slashes on all platforms (clangd on Windows accepts this)
  
- 
 ## Rationale ##
 
 Compilation databases are useful for getting an editor to preview compile errors or provide semantic context while adhering to a specific mode of compilation.  Intutitively, the best way to generate them is to have your existing build tooling generate them so the compile commands match how the project is actually being built.
@@ -16,6 +15,13 @@ Compilation databases are useful for getting an editor to preview compile errors
 However, in practice, the set of arguments that produces the most timely error messages can vary from the final compilation settings.  For instance, it can be annoying that an unused function is generating a warning in the editor.  However, it is useful during compilation time, so adding `-Wno-unused-function` to the compilation database configures an editor to prevent this warning, while continuing to generate it at compile time.
 
 Further afield, cleanup-compdb can be used to provide compatibility to clangd for [unity builds](https://en.wikipedia.org/wiki/Unity_build).  This [blog post](https://www.frogtoss.com/labs/clangd-with-unity-builds.html) proposes a solution to this problem.
+
+## Changelog ##
+
+release | what's new                  | date
+--------|-----------------------------|---------
+0.0.1   | initial                     | jan 2023
+0.2.1   | better error handling       | apr 2025
 
 ## Usage ##
 
