@@ -6,7 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-json_compilation_db = "1.0.1"
+json_compilation_db = "1.0.2"
 path-slash = "0.2.1"
 path-absolutize = "3.1.1"
 clap = { version = "4.5.35", features = ["derive"] }
