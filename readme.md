@@ -7,6 +7,15 @@ Postprocess and clean up your `compilation_commands.json`, as generated from you
  - Removes problematic `cmd /C` prefix in commands on Windows, which confuses clangd
  - Strip linker commands and phony targets which are not real compilation commands
  - Increases readability with unix-style slashes on all platforms (clangd on Windows accepts this)
+ 
+ 
+## Rationale ##
+
+Compilation databases are useful for getting an editor to preview compile errors or provide semantic context while adhering to a specific mode of compilation.  Intutitively, the best way to generate them is to have your existing build tooling generate them so the compile commands match how the project is actually being built.
+
+However, in practice, the set of arguments that produces the most timely error messages can vary from the final compilation settings.  For instance, it can be annoying when warning that a function is being used during editing time.  However, it is useful during compilation time, so adding `-Wno-unused-function` to the compilation database configures an editor to prevent this warning, while continuing to generate it at compile time.
+
+Further afield, cleanup-compdb can be used to correctly provide support while in included c files in [unity builds](https://en.wikipedia.org/wiki/Unity_build).  This [blog post](https://www.frogtoss.com/labs/clangd-with-unity-builds.html) proposes a solution to this problem.
 
 ## Usage ##
 
@@ -16,7 +25,9 @@ Postprocess and clean up your `compilation_commands.json`, as generated from you
 
 ## Project Status ##
 
-Works on the author's Windows machine, using output from Ninja 1.10.2.  Not intended for widespread use just yet.
+Tested and working with Ninja 1.10 through 1.12 over three years on Linux, Windows and MacOS.  In continued use by the author.
+
+Okay for public use.
 
 # Copyright and Credit #
 
@@ -25,3 +36,5 @@ File [LICENSE](LICENSE) covers all files in this repo.
 
 Compilation Database Cleanup by Michael Labbe
 <mike@frogtoss.com>
+
+[json_compilation_db crate](https://github.com/rizsotto/json_compilation_db) by László Nagy
